@@ -2,15 +2,16 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/admin/.oh-my-zsh"
+export ZSH="/Users/denisokunev/.oh-my-zsh"
+
+# Path to Flutter
+export PATH="$PATH:$HOME/development/flutter/bin"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-
-# ZSH_THEME="robbyrussell"
-ZSH_THEME="avit"
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -100,20 +101,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Fzf search
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPTS="--extended"
-export FZF_DEFAULT_COMMAND='fd --type f'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-fag(){
-  local line
-  if [ \( -n "$2" \) -a \( "$2" = '-w' \) ]
-  then
-    line=`ag --word-regexp --nocolor "$1" | fzf` \
-      && vim $(cut -d':' -f1 <<< "$line") +$(cut -d':' -f2 <<< "$line")
-  else
-    line=`ag --nocolor "$1" | fzf` \
-      && vim $(cut -d':' -f1 <<< "$line") +$(cut -d':' -f2 <<< "$line")
-  fi
-}
+# Set Git language to English
+alias git='LANG=en_GB git'
+alias git='LANG=en_US.UTF-8 git'
